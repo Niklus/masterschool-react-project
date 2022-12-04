@@ -11,6 +11,7 @@ function Home({ posts }) {
         <Link to="/">
           <button>Home</button>
         </Link>
+        <h1>Student Shelters</h1>
         <Link to="/admin">
           <button>Login</button>
         </Link>
