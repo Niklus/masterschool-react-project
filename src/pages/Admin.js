@@ -108,8 +108,10 @@ function Admin({ posts }) {
               />
               <div className="card-body">
                 <h3 className="card-title">{post.title}</h3>
-                <div className="card-text">{post.description}</div>
-                <p className="card-text date">123</p>
+                <div className="card-text">
+                  {post.description.substring(0, 30) + "..."}
+                </div>
+                <p className="card-text date">${post.price}</p>
 
                 <Link to={`/update/${index}`}>
                   <button>Edit</button>

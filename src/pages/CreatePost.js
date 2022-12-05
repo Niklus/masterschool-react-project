@@ -59,7 +59,7 @@ function CreatePost() {
       const size = image.size / 1024 / 1024;
 
       // Check image size
-      if (size > 2) {
+      if (size > 10) {
         // If image is larger than 2mb return
         alert("Image is too large");
         return;
