@@ -3,6 +3,9 @@ import Login from "../components/Login";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import app from "../firebase";
 import { Link } from "react-router-dom";
+import { getDatabase, set, ref as dbRef } from "firebase/database";
+
+const db = getDatabase(app);
 
 const auth = getAuth(app);
 
@@ -75,7 +78,16 @@ function Admin({ posts }) {
     );
   }
 
-  function deletePost(index) {}
+  function deletePost(index) {
+    const filtered = posts.filter((item, i) => {
+      if (i === index) {
+        return false;
+      }
+      return true;
+    });
+
+    set(dbRef(db, "posts"), filtered);
+  }
 
   const filtered = posts.filter((item) => {
     return item.uid === user.uid;
