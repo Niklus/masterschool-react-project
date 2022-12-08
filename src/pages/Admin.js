@@ -86,7 +86,9 @@ function Admin({ posts }) {
       return true;
     });
 
-    set(dbRef(db, "posts"), filtered);
+    if (window.confirm("Are You Sure")) {
+      set(dbRef(db, "posts"), filtered);
+    }
   }
 
   const filtered = posts.filter((item) => {
@@ -103,10 +105,13 @@ function Admin({ posts }) {
         <Link to="/">
           <button>Home</button>
         </Link>
-        <Link to="/create">
-          <button>New Post</button>
-        </Link>
-        <button onClick={logOut}>Log Out</button>
+        <h1>Admin</h1>
+        <div>
+          <Link to="/create">
+            <button>New Post</button>
+          </Link>{" "}
+          <button onClick={logOut}>Log Out</button>
+        </div>
       </header>
       <div className="posts">
         {filtered.map((post, index) => {
